@@ -1,0 +1,9 @@
+def maxFraction(numerators, denominators):
+    fraction = []
+    for i in range(0, len(numerators)):
+        j = numerators[i]/denominators[i]
+        fraction.append(j)
+    return fraction.index(max(fraction))
+
+
+print(maxFraction([5, 2, 5], [6, 3, 4]))
