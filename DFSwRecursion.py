@@ -1,0 +1,32 @@
+graph = {
+    'a':{'b':6,'c':8,'f':5},
+    'b':{'a':6,'c':7,'e':3},
+    'c':{'a':8,'b':7,'d':4},
+    'd':{'c':4,'e':1,'f':1},
+    'e':{'b':3,'d':1,'f':1},
+    'f':{'a':5,'d':1,'e':1}
+}
+start = 'a'
+end = 'd'
+prev = {}
+visited = set()
+def DFS_Recursion(visited,start):
+    if start not in visited:
+        visited.add(start)
+        for k in graph[start]:
+            prev[k] = start
+            DFS_Recursion(visited,k)
+            
+DFS_Recursion(visited,'a')
+
+def findPath(prev,start,end):
+    print(end, end = ' ')
+    total = 0
+    while end != start:
+        t = prev[end]
+        total += graph[end][t]
+        print('<-',t,end = ' ')
+        end = t 
+    return total 
+
+print(findPath(prev,start,end))
